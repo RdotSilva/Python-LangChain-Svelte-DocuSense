@@ -1,3 +1,7 @@
+from langchain.document_loaders import PyPDFLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+
 def create_embeddings_for_pdf(pdf_id: str, pdf_path: str):
     """
     Generate and store embeddings for the given pdf
