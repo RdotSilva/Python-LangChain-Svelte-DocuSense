@@ -1,5 +1,10 @@
 from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+import sys
+import io
+
+# Required workaround for windows
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 
 
 def create_embeddings_for_pdf(pdf_id: str, pdf_path: str):
