@@ -1,4 +1,4 @@
 from langchain.embeddings import OpenAIEmbeddings
 
 
-embeddings = OpenAIEmbeddings
+embeddings = OpenAIEmbeddings()
