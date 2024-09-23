@@ -9,6 +9,6 @@ pinecone.Pinecone(
 )
 
 vector_store = Pinecone.from_existing_index(
-    os.getenv("PINECONE_ENV_NAME"),
+    os.getenv("PINECONE_INDEX_NAME"),
     embeddings,
 )
