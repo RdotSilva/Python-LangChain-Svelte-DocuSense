@@ -5,6 +5,10 @@ from celery import Celery, Task
 
 
 def celery_init_app(app: Flask) -> Celery:
+    """
+    Initialize the celery setup used for workers with Redis
+    """
+
     class FlaskTask(Task):
         def __call__(self, *args: object, **kwargs: object) -> object:
             with app.app_context():
