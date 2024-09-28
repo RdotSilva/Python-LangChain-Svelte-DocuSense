@@ -13,6 +13,9 @@ class SqlMessageHistory(BaseChatMessageHistory, BaseModel):
         return get_messages_by_conversation_id(self.conversation_id)
 
     def add_message(self, message):
+        """
+        Add a new message to the SQLite database
+        """
         return add_message_to_conversation(
             conversation_id=self.conversation_id,
             role=message.type,
