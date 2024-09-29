@@ -21,3 +21,7 @@ class SqlMessageHistory(BaseChatMessageHistory, BaseModel):
             role=message.type,
             content=message.content,
         )
+
+    def clear(self):
+        # TODO: Add logic for clear
+        pass
