@@ -19,4 +19,5 @@ messages = prompt.format_messages(content="tell me a joke")
 # Create generator output
 output = chat.stream(messages)
 
-print(output)
+for message in output:
+    print(message.content)
