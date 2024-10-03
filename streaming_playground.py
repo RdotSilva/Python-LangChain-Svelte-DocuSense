@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-chat = ChatOpenAI()
+chat = ChatOpenAI(streaming=True)
 
 prompt = ChatPromptTemplate.from_messages(
     [
@@ -17,13 +17,15 @@ prompt = ChatPromptTemplate.from_messages(
 
 chain = LLMChain(llm=chat, prompt=prompt)
 
-output = chain("Tell me a joke.")
-print(output)
+output = chain.stream(input={"content": "Tell me a joke."})
 
-messages = prompt.format_messages(content="tell me a joke")
+for item in output:
+    print(item)
 
-# Create generator output
-output = chat.stream(messages)
+# messages = prompt.format_messages(content="tell me a joke")
 
-for message in output:
-    print(message.content)
+# # Create generator output
+# output = chat.stream(messages)
+
+# for message in output:
+#     print(message.content)
