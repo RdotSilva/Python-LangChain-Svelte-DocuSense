@@ -14,7 +14,10 @@ class StreamingHandler(BaseCallbackHandler):
         print(token)
 
 
-chat = ChatOpenAI(streaming=True)
+chat = ChatOpenAI(
+    streaming=True,
+    callbacks=[StreamingHandler()],
+)
 
 prompt = ChatPromptTemplate.from_messages(
     [
