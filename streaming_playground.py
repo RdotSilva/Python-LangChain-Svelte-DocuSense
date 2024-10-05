@@ -25,3 +25,13 @@ prompt = ChatPromptTemplate.from_messages(
         ("human", "{content}"),
     ]
 )
+
+
+class StreamingChain(LLMChain):
+    def stream(self, input):
+        print("Hello World")
+
+
+chain = StreamingChain(llm=chat, prompt=prompt)
+
+chain.stream("FAKETEXT")
