@@ -11,7 +11,8 @@ load_dotenv()
 
 class StreamingHandler(BaseCallbackHandler):
     def on_llm_new_token(self, token, **kwargs):
-        print(token)
+        # TODO: update logic
+        pass
 
 
 chat = ChatOpenAI(
