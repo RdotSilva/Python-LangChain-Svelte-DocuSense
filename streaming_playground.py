@@ -29,9 +29,11 @@ prompt = ChatPromptTemplate.from_messages(
 
 class StreamingChain(LLMChain):
     def stream(self, input):
-        print("Hello World")
+        yield "hi"
+        yield "there"
 
 
 chain = StreamingChain(llm=chat, prompt=prompt)
 
-chain.stream("FAKETEXT")
+for output in chain.stream("Testing"):
+    print(output)
