@@ -14,8 +14,7 @@ queue = Queue()
 
 class StreamingHandler(BaseCallbackHandler):
     def on_llm_new_token(self, token, **kwargs):
-        # TODO: update logic
-        pass
+        queue.put(token)
 
 
 chat = ChatOpenAI(
