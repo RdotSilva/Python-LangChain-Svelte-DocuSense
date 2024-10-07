@@ -31,6 +31,17 @@ prompt = ChatPromptTemplate.from_messages(
 
 class StreamingChain(LLMChain):
     def stream(self, input):
+        """
+        Check for each token in the queue and return the each token in a stream
+
+        :param input: The input of the chain
+
+        :return: A token
+
+        Example Usage:
+
+        chain = chain.stream(input={"content": "Tell me a joke"}):
+        """
         self(input)
         while True:
             token = queue.get()
