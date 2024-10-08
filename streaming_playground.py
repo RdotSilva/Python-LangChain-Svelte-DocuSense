@@ -6,6 +6,7 @@ from langchain.chains import LLMChain
 from langchain.callbacks.base import BaseCallbackHandler
 from dotenv import load_dotenv
 from queue import Queue
+from threading import Thread
 
 load_dotenv()
 
@@ -42,7 +43,12 @@ class StreamingChain(LLMChain):
 
         chain = chain.stream(input={"content": "Tell me a joke"}):
         """
-        self(input)
+
+        def task():
+            self(input)
+
+        Thread(target=task).start()
+
         while True:
             token = queue.get()
             yield token
