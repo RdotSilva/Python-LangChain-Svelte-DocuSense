@@ -1,5 +1,7 @@
 # Playground used to experiment with Streaming
 
+from typing import Any
+from uuid import UUID
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 from langchain.chains import LLMChain
@@ -18,6 +20,9 @@ class StreamingHandler(BaseCallbackHandler):
         queue.put(token)
 
     def on_llm_end(self, response, **kwargs):
+        queue.put(None)
+
+    def on_llm_error(self, error, **kwargs):
         queue.put(None)
 
 
