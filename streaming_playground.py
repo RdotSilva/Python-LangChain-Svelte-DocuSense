@@ -54,6 +54,8 @@ class StreamingChain(LLMChain):
 
         while True:
             token = queue.get()
+            if token is None:
+                break
             yield token
 
 
