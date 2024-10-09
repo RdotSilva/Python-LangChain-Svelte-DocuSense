@@ -16,6 +16,9 @@ queue = Queue()
 
 
 class StreamingHandler(BaseCallbackHandler):
+    def __init__(self, queue):
+        self.queue = queue
+
     def on_llm_new_token(self, token, **kwargs):
         queue.put(token)
 
