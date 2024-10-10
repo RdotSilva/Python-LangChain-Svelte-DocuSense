@@ -12,21 +12,19 @@ from threading import Thread
 
 load_dotenv()
 
-queue = Queue()
-
 
 class StreamingHandler(BaseCallbackHandler):
     def __init__(self, queue):
         self.queue = queue
 
     def on_llm_new_token(self, token, **kwargs):
-        queue.put(token)
+        self.queue.put(token)
 
     def on_llm_end(self, response, **kwargs):
-        queue.put(None)
+        self.queue.put(None)
 
     def on_llm_error(self, error, **kwargs):
-        queue.put(None)
+        self.queue.put(None)
 
 
 chat = ChatOpenAI(
@@ -54,6 +52,9 @@ class StreamingChain(LLMChain):
 
         chain = chain.stream(input={"content": "Tell me a joke"}):
         """
+
+        queue = Queue()
+        handler = StreamingHandler(queue)
 
         def task():
             self(input)
