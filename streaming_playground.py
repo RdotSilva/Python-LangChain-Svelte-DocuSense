@@ -29,7 +29,6 @@ class StreamingHandler(BaseCallbackHandler):
 
 chat = ChatOpenAI(
     streaming=True,
-    callbacks=[StreamingHandler()],
 )
 
 prompt = ChatPromptTemplate.from_messages(
@@ -57,7 +56,7 @@ class StreamingChain(LLMChain):
         handler = StreamingHandler(queue)
 
         def task():
-            self(input)
+            self(input, callbacks={handler})
 
         Thread(target=task).start()
 
