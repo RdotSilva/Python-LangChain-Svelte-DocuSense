@@ -27,9 +27,7 @@ class StreamingHandler(BaseCallbackHandler):
         self.queue.put(None)
 
 
-chat = ChatOpenAI(
-    streaming=True,
-)
+chat = ChatOpenAI(streaming=True)
 
 prompt = ChatPromptTemplate.from_messages(
     [
