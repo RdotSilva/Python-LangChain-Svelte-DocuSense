@@ -54,7 +54,7 @@ class StreamingChain(LLMChain):
         handler = StreamingHandler(queue)
 
         def task():
-            self(input, callbacks={handler})
+            self(input, callbacks=[handler])
 
         Thread(target=task).start()
 
